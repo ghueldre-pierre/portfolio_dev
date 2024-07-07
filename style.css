@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --main-bg-color: #e5e5e5;
+    --accent-color: #ec5c29;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+
+    background-color: var(--main-bg-color);
+    --current-bg-color: var(--main-bg-color);
+    --current-color: black;
+}
+
+img, svg {
+    max-width: 100%;
+    display: block;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* ------------------- */
+h2 {
+    color: var(--accent-color);
+    font-size: 14px;
+}
+
+/* ------------------- */
+dialog {
+    max-width: 512px;
+    margin-inline: auto;
+    border: none;
+    border-radius: 1em;
+    padding: 2%;
+
+    background-color: black;
+    --current-bg-color: black;
+    --current-color: white;
+
+    position: relative;
+}
+dialog .top-ui {
+    background-color: transparent;
+    position: sticky;
+    top: 0;
+    text-align: right;
+    padding: 0.4em;
+}
+button.close {
+    background-color: var(--current-bg-color);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ddd;
+    padding: 0.2em;
+}
+dialog .content {
+    background-color: #ddd;
+    padding: 0em 0.4em 0.6em;
+    border-radius: 1em;
+}
+
+.works-grid {
+    display: grid;
+    place-content: center;
+}
+.work {
+    /* avoid to take all of the width : the image determines the width */
+    display: inline-block;
+
+    background-color: #ddd;
+    border-radius: 1em;
+    padding: 0 0.25em 0.25em;
+
+    cursor: pointer;
+
+    transition: box-shadow 0.7s, transform 0.7s;
+
+    clip-path: inset(0 0 -26px 0);
+}
+.work:hover {
+    box-shadow: 0 15px 20px -16px #b2b2b2;
+    transform: translateY(-0.1em);
+}
+.card {
+    text-align: center;
+}
+.card .tab {
+    font-size: 0.8rem;
+
+    background-color: var(--current-bg-color);
+    color: var(--current-color);
+
+    width: 33%;
+    margin-inline: auto;
+    margin-bottom: 0.25em;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        90% 100%,
+        10% 100%
+    );
+}
+.card .tab p {
+    padding-block: 0.2em;
+}
+.card img {
+    border-radius: 1em;
+    width: 512px; /* temp */
+}
