@@ -24,6 +24,8 @@ body {
     --current-color: black;
 
     padding-bottom: 1rem;
+    max-width: 1240px;
+    margin-inline: auto;
 }
 
 img, svg {
