@@ -6,87 +6,71 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style-min.css">
+    <!-- <link rel="stylesheet" href="style-min.css"> -->
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="main.js"></script>
     <title>Portfolio de Pierre</title>
 </head>
 <body>
-    <h1>Portfolio de Pierre Ghueldre - Développeur web</h1>
-    <section id="works">
-        <h2>Travaux</h2>
-        <div class="works-grid">
-            <article class="work">
-                <div class="card">
-                    <div class="tab">
-                        <p>kasa.fr</p>
-                    </div>
-                    <img src="./images/kasa_preview.jpg" alt="">
-                </div>
-                <template>
+    <header class="site-header">
+        <h1>Pierre Ghueldre</h1>
+        <!-- METTRE l'INTRO ICI -->
+        <!-- MOBILE ONLY -->
+        <a href="">Voir mes travaux récents</a>
+        <a href="">Me contacter</a>
+    </header>
+    <main>
+        <section id="works">
+            <h2>Travaux</h2>
+            <div class="works-grid">
+                <article class="work" data-work-id="kasa">
                     <div class="card">
                         <div class="tab">
                             <p>kasa.fr</p>
                         </div>
                         <img src="./images/kasa_preview.jpg" alt="">
                     </div>
-                    <p>Kasa est une application web de location immobilière.</p>
-                    <dl>
-                        <dt>Rôle</dt>
-                        <dd>Développeur frontend</dd>
-                        <dt>Technologies utilisées</dt>
-                        <dd><img src="./icons/React_Logo_SVG.svg" alt="React" title="React"></dd>
-                        <dd><img src="./icons/react-router.svg" alt="React Router" title="React Router"></dd>
-                        <dd><img src="./icons/sass.svg" alt="Sass" title="Sass"></dd>
-                    </dl>
-                </template>
-            </article>
+                </article>
+            </div>
+            <dialog id="work_dialog">
+                <div class="top-ui">
+                    <button class="close" aria-label="Fermer la boîte de dialogue">
+                        <svg width="16" height="16"  fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.02085 5.63511L7.02085 7.02012L5.6364 7.02012L2.00004 3.38375L3.38477 1.99902L7.02085 5.63511ZM10.3642 8.97842L8.97915 8.97842L8.97915 10.3629L12.6163 14L14.001 12.6153L10.3642 8.97842Z" fill="#DAE1E4"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.3636 7.02012L14 3.38375L12.6152 1.99902L8.97915 5.63511L8.97915 7.02012L10.3636 7.02012ZM7.02085 10.3629L7.02085 8.97842L5.63584 8.97842L1.99898 12.6153L3.38371 14L7.02085 10.3629Z" fill="#DAE1E4"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="content">
+                    <!-- WORK DETAILS -->
+                </div>
+            </dialog>
+        </section>
+    </main>
+    <template id="work_template">
+        <div class="card">
+            <div class="tab">
+                <p data-key="url"></p>
+            </div>
+            <img src="" alt="" data-key="preview_image">
         </div>
-        <dialog>
-            <div class="top-ui">
-                <button class="close" aria-label="Fermer la boîte de dialogue">
-                    <svg width="16" height="16"  fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.02085 5.63511L7.02085 7.02012L5.6364 7.02012L2.00004 3.38375L3.38477 1.99902L7.02085 5.63511ZM10.3642 8.97842L8.97915 8.97842L8.97915 10.3629L12.6163 14L14.001 12.6153L10.3642 8.97842Z" fill="#DAE1E4"></path>
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.3636 7.02012L14 3.38375L12.6152 1.99902L8.97915 5.63511L8.97915 7.02012L10.3636 7.02012ZM7.02085 10.3629L7.02085 8.97842L5.63584 8.97842L1.99898 12.6153L3.38371 14L7.02085 10.3629Z" fill="#DAE1E4"></path>
-                    </svg>
-                </button>
-            </div>
-            <div class="content">
-                <!-- WORK DETAILS -->
-            </div>
-        </dialog>
-    </section>
-    <script>
-    const workDialogElement = document.body.querySelector("#works dialog");
-    
-    window.addEventListener("click", (event) => {
-        if(workDialogElement.open) {
-            const closeButton = event.target.closest("button.close");
-            if(! closeButton) return;
-            workDialogElement.close();
-        } else {
-            const clickedArticle = event.target.closest("article.work");
-            console.log("Clicked article");
-            if(! clickedArticle) return;
-            const articleDetails = clickedArticle.querySelector("template").content.cloneNode(true);
-            workDialogElement.querySelector(".content").replaceChildren(articleDetails);
-            workDialogElement.showModal();
-        }
-    })
-
-    /*
-    window.addEventListener("click", (event) => {
-        if(currentlyOpenedDialog) {
-            const closeButton = event.target.closest("button.close");
-            if(! closeButton) return;
-            currentlyOpenedDialog.close();
-            currentlyOpenedDialog = null;
-        } else {
-            const article = event.target.closest("article.work");
-            if(! article) return;
-            currentlyOpenedDialog = article.querySelector("dialog");
-            currentlyOpenedDialog.showModal();
-        }
-    });
-    */
-    </script>
+        <div class="work_intro" data-key="intro"></div>
+        <dl class="work_meta">
+            <dt>Rôle :</dt>
+            <dd class="item" data-key="role"></dd>
+            <dt>Technologies utilisées :</dt>
+            <dd class="item">
+                <ul class="no-default tech-list" data-key="tech_list"></ul>
+            </dd>
+            <dt>Détails :</dt>
+            <dd class="item">
+                <ul class="detail-list" data-key="detail_list"></ul>
+            </dd>
+            <dt>Liens :</dt>
+            <dd class="item">
+                <ul class="detail-list" data-key="link_list"></ul>
+            </dd>
+        </dl>
+    </template>
 </body>
 </html>
